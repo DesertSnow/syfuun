@@ -20,7 +20,7 @@ class TodosListTest < ActionDispatch::IntegrationTest
   end
 
   test 'create todo' do
-    post_via_redirect 'todos', title: 'do the laundry'
+    post_via_redirect 'todos', todo: {title: 'do the laundry'}
     assert_equal '/todos', path
     assert_include response.body, 'do the laundry'
   end
