@@ -60,7 +60,7 @@ Syfuun::Application.routes.draw do
 
   resources :todos, only: [:index, :new, :create] do
     member do
-      resources :finished, only: :create
+      resources :finished, only: :create, controller: :todo_finished
     end
   end
 end
