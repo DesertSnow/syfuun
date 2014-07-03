@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TodosListTest < ActionDispatch::IntegrationTest
+  fixtures :todos
+
   test 'root route should return list' do
     get '/'
     assert_response :success
@@ -23,5 +25,11 @@ class TodosListTest < ActionDispatch::IntegrationTest
     post_via_redirect 'todos', todo: {title: 'do the laundry'}
     assert_equal '/todos', path
     assert_include response.body, 'do the laundry'
+  end
+
+  test 'flag todo as finished' do
+    post_via_redirect "todos/#{todos(:todo_1).id}/finished"
+    assert_response :success
+    assert_equal '/todos', path
   end
 end

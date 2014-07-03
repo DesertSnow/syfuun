@@ -58,5 +58,9 @@ Syfuun::Application.routes.draw do
 
   root to: 'todos#index'
 
-  resources :todos, only: [:index, :new, :create]
+  resources :todos, only: [:index, :new, :create] do
+    member do
+      resources :finished, only: :create
+    end
+  end
 end
