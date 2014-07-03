@@ -27,11 +27,8 @@ class TodosControllerTest < ActionController::TestCase
     get :new
     assert_template :new
     assert_instance_of Todo, assigns(:todo)
-  end
 
-  test '#new renders the form for a new todo' do
-    get :new
-
+    #optional
     assert_select 'form' do
       assert_select 'input[type="text"]#todo_title'
       assert_select 'input[type="submit"]'
@@ -44,5 +41,20 @@ class TodosControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to todos_path
+  end
+
+  test '#create with failure' do
+    assert_no_difference('Todo.count') do
+      post :create, todo: {title: ''}
+    end
+    assert_template :new
+    assert_equal assigns(:todo).errors[:title], ["can't be blank"]
+
+    #optional
+    assert_select '#error_explanation ul' do |elements|
+      elements.each do |element|
+        assert_select element, 'li', "Title can't be blank"
+      end
+    end
   end
 end

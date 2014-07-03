@@ -8,4 +8,9 @@ class TodoTest < ActiveSupport::TestCase
     todo.title = 'some random todo item'
     assert_equal(todo.title, 'some random todo item')
   end
+
+  test 'does not save todo without title' do
+    todo = Todo.new title: ''
+    assert !todo.save
+  end
 end
