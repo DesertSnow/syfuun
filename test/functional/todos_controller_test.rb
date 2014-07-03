@@ -22,4 +22,19 @@ class TodosControllerTest < ActionController::TestCase
       end
     end
   end
+
+  test '#new the new template' do
+    get :new
+    assert_template :new
+    assert_instance_of Todo, assigns(:todo)
+  end
+
+  test '#new renders the form for a new todo' do
+    get :new
+
+    assert_select 'form' do
+      assert_select 'input[type="text"]#todo_title'
+      assert_select 'input[type="submit"]'
+    end
+  end
 end
