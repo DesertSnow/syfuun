@@ -12,4 +12,10 @@ class TodosListTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert assigns(:todos)
   end
+
+  test 'todos/new returns the form for a new todo' do
+    get 'todos/new'
+    assert_response :success
+    assert assigns(:todo)
+  end
 end
