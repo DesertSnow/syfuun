@@ -37,4 +37,12 @@ class TodosControllerTest < ActionController::TestCase
       assert_select 'input[type="submit"]'
     end
   end
+
+  test '#create with success' do
+    assert_difference('Todo.count') do
+      post :create, todo: {title: 'do the laundry'}
+    end
+
+    assert_redirected_to todos_path
+  end
 end

@@ -6,4 +6,9 @@ class TodosController < ApplicationController
   def new
     @todo = Todo.new
   end
+
+  def create
+    Todo.create(params.require(:todo).permit(:title))
+    redirect_to action: :index
+  end
 end

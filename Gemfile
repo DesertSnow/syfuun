@@ -37,7 +37,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-
+gem 'strong_parameters'
 gem 'capybara'
 gem "haml"
 gem "haml-rails"
