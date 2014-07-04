@@ -13,4 +13,14 @@ class TodoTest < ActiveSupport::TestCase
     todo = Todo.new title: ''
     assert !todo.save
   end
+
+  test '#finish! changes finished state to true and saves' do
+    todo = todos(:todo_1)
+    assert !todo.finished?
+
+    todo.finish!
+
+    assert todo.finished?#state changed?
+    assert !todo.changed?#changes persisted?
+  end
 end
