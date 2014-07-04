@@ -3,6 +3,8 @@ class Todo < ActiveRecord::Base
 
   validates :title, presence: true, allow_blank: false
 
+  scope :unfinished, -> {where(finished: false)}
+
   def finish!
     update_attribute(:finished, true)
   end

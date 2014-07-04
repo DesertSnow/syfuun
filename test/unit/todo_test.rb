@@ -23,4 +23,9 @@ class TodoTest < ActiveSupport::TestCase
     assert todo.finished?#state changed?
     assert !todo.changed?#changes persisted?
   end
+
+  test 'scope "unfinished" should not return finished todos' do
+    results = Todo.unfinished
+    assert_not_include results, todos(:finished_todo)
+  end
 end
