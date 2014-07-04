@@ -23,6 +23,17 @@ class TodosControllerTest < ActionController::TestCase
     end
   end
 
+  test 'index view should contain "finish" action for every visible todo' do
+    get :index
+
+    visible_todos = todos(:todo_1, :todo_2)
+    visible_todos.each do |todo|
+      assert_select("form[action$='#{finished_todo_path(todo)}'][method='post']") do
+        assert_select("button[type='submit']")
+      end
+    end
+  end
+
   test '#new the new template' do
     get :new
     assert_template :new

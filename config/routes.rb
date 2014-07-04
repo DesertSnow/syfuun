@@ -60,7 +60,11 @@ Syfuun::Application.routes.draw do
 
   resources :todos, only: [:index, :new, :create] do
     member do
-      resources :finished, only: :create, controller: :todo_finished
+      resource :finished, only: [], controller: :todo_finished, as: :todo do
+        collection do
+          post :create, as: :finished#for discussion: how to define/name these kind of routes?
+        end
+      end
     end
   end
 end
