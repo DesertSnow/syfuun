@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = Todo.where(finished: false).all#finised condition will move to scope
   end
 
   def new

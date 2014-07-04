@@ -28,8 +28,14 @@ class TodosListTest < ActionDispatch::IntegrationTest
   end
 
   test 'flag todo as finished' do
+    get '/todos'
+    assert_include response.body, todos(:todo_1).title#to make sure it is finish action that removes item from list
+
     post_via_redirect "todos/#{todos(:todo_1).id}/finished"
     assert_response :success
     assert_equal '/todos', path
+
+    #item no longer visible
+    assert_not_include response.body, todos(:todo_1).title
   end
 end

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TodosControllerTest < ActionController::TestCase
-  test '#index should render list of todos' do
+  test '#index should render list of UNFINISHED todos' do
     get :index
     assert_response :success
     assert_template :index
@@ -11,7 +11,7 @@ class TodosControllerTest < ActionController::TestCase
     assert_equal(['Make sure TDD is used', 'Make sure to work outside in'], todo_titles)
   end
 
-  test '#index view should show all todos' do#for discussion
+  test '#index view should show all UNFINISHED todos' do#for discussion
     get :index
 
     expected_list = ['Make sure TDD is used', 'Make sure to work outside in']
