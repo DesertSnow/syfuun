@@ -38,4 +38,10 @@ class TodosListTest < ActionDispatch::IntegrationTest
     #item no longer visible
     assert_not_include response.body, todos(:todo_1).title
   end
+
+  test 'prioritise todo item' do
+    post_via_redirect "todos/#{todos(:todo_1).id}/prioritised"
+    assert_response :success
+    assert_equal '/todos', path
+  end
 end
