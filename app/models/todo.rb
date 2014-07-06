@@ -8,4 +8,8 @@ class Todo < ActiveRecord::Base
   def finish!
     update_attribute(:finished, true)
   end
+
+  def prioritise!
+    update_attribute(:prior, true)
+  end
 end

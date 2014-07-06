@@ -28,4 +28,11 @@ class TodoTest < ActiveSupport::TestCase
     results = Todo.unfinished
     assert_not_include results, todos(:finished_todo)
   end
+
+  test '#prioritise! updates prior to true' do
+    todo = todos(:todo_1)
+    todo.prioritise!
+    assert todo.prior?
+    assert !todo.changed?#changes persisted?
+  end
 end
