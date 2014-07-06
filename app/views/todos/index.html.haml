@@ -1,7 +1,7 @@
 %h2
   TODO list
 %ul
-  - @todos.each do |todo|
+  - @todos.order(:created_at).each do |todo|
     %li
       = todo.title
       - if todo.prior?
