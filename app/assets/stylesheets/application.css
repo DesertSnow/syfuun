@@ -11,3 +11,6 @@
  *= require_self
  *= require_tree .
  */
+
+form {display: inline-block;}
+span.important {color: #ff7b38;}

@@ -6,8 +6,9 @@
 #
 todo_1:
   title: 'Make sure TDD is used'
-todo_2:
+prioritised_todo:
   title: 'Make sure to work outside in'
+  prior: true
 finished_todo:
   title: 'Make sure finished todos are handled as expected'
   finished: true
