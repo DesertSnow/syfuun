@@ -6,7 +6,7 @@
       = todo.title
       - if todo.prior?
         %span.important !!!
-      %form{action: finished_todo_path(todo), method: :post}
+      %form{action: todo_finished_path(todo), method: :post}
         %button{type: :submit} Finish
       - unless todo.prior?
         = form_for todo, url: todo_prioritised_path(todo), method: :post do |f|

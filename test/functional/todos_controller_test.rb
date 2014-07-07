@@ -28,7 +28,7 @@ class TodosControllerTest < ActionController::TestCase
 
     visible_todos = todos(:todo_1, :prioritised_todo)
     visible_todos.each do |todo|
-      assert_select("form[action$='#{finished_todo_path(todo)}'][method='post']") do
+      assert_select("form[action$='#{todo_finished_path(todo)}'][method='post']") do
         assert_select("button[type='submit']")
       end
     end
