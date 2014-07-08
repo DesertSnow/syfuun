@@ -4,11 +4,11 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-todo_1:
+unfinished:
   title: 'Make sure TDD is used'
-prioritised_todo:
+prioritised:
   title: 'Make sure to work outside in'
   prior: true
-finished_todo:
+finished:
   title: 'Make sure finished todos are handled as expected'
   finished: true
