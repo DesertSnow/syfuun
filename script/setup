@@ -1,0 +1,8 @@
+#!/bin/sh
+ 
+bundle install
+bin/rake db:create
+bin/rake db:schema:load
+bin/rake db:fixtures:load
+bin/rake db:seed
+bin/rake log:clear
