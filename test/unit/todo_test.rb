@@ -2,7 +2,6 @@ require 'test_helper'
 
 class TodoTest < ActiveSupport::TestCase
   test '#title is an attribute' do
-    #for the sake of having a unit test as demonstration
     todo = Todo.new
     assert_nil todo.title
     todo.title = 'some random todo item'
@@ -15,7 +14,7 @@ class TodoTest < ActiveSupport::TestCase
   end
 
   test '#finish! changes finished state to true and saves' do
-    todo = todos(:todo_1)
+    todo = todos(:unfinished)
     assert !todo.finished?
 
     todo.finish!
@@ -26,11 +25,11 @@ class TodoTest < ActiveSupport::TestCase
 
   test 'scope "unfinished" should not return finished todos' do
     results = Todo.unfinished
-    assert_not_include results, todos(:finished_todo)
+    assert_not_include results, todos(:finished)
   end
 
   test '#prioritise! updates prior to true' do
-    todo = todos(:todo_1)
+    todo = todos(:not_prioritised)
     todo.prioritise!
     assert todo.prior?
     assert !todo.changed?#changes persisted?

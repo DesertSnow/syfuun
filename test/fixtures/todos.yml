@@ -6,9 +6,11 @@
 #
 unfinished:
   title: 'Make sure TDD is used'
-prioritised:
-  title: 'Make sure to work outside in'
-  prior: true
 finished:
   title: 'Make sure finished todos are handled as expected'
   finished: true
+not_prioritised:
+  title: 'implement todo priority'
+prioritised:
+  title: 'Make sure to work outside in'
+  prior: true

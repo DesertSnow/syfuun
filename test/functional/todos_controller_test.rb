@@ -8,13 +8,13 @@ class TodosControllerTest < ActionController::TestCase
 
     todo_titles = assigns(:todos).map(&:title)
 
-    assert_equal(todos(:todo_1, :prioritised_todo).map(&:title), todo_titles)
+    assert_equal(todos(:unfinished, :not_prioritised, :prioritised).map(&:title), todo_titles)
   end
 
   test '#index view should show all UNFINISHED todos' do#for discussion
     get :index
 
-    expected_list = todos(:todo_1, :prioritised_todo).map(&:title)
+    expected_list = todos(:unfinished, :not_prioritised, :prioritised).map(&:title)
     assert_select('ul li') do |elements|
       assert_equal(expected_list.length, elements.length)
       (0...expected_list.length).each do |index|
@@ -26,7 +26,7 @@ class TodosControllerTest < ActionController::TestCase
   test 'index view should contain "finish" action for every visible todo' do
     get :index
 
-    visible_todos = todos(:todo_1, :prioritised_todo)
+    visible_todos = todos(:unfinished, :not_prioritised, :prioritised)
     visible_todos.each do |todo|
       assert_select("form[action$='#{todo_finished_path(todo)}'][method='post']") do
         assert_select("button[type='submit']")
@@ -36,7 +36,7 @@ class TodosControllerTest < ActionController::TestCase
 
   test 'index view shows a prioritise button for non-prior todo items only' do
     get :index
-    assert_select("form[action$='#{todo_prioritised_path(todos(:todo_1))}'][method='post']") do
+    assert_select("form[action$='#{todo_prioritised_path(todos(:unfinished))}'][method='post']") do
       assert_select("input[type='submit']")
     end
   end
