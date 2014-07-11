@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.unfinished#finised condition will move to scope
+    @todos = Todo.unfinished
   end
 
   def new
