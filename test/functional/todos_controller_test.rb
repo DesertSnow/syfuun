@@ -60,7 +60,7 @@ class TodosControllerTest < ActionController::TestCase
   end
 
   test '#create with success' do
-    assert_difference('Todo.count') do
+    assert_difference('Todo.count') do#default difference of +1
       post :create, todo: {title: 'do the laundry'}
     end
 

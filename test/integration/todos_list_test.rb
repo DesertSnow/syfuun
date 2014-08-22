@@ -51,14 +51,16 @@ class TodosListTest < ActionDispatch::IntegrationTest
       end
 
       def add_new_todo(title)
-        visit('/todos/new') # or click_link 'New' ?
+        # visit('/todos/new')
+        click_link 'New'
         fill_in('Title', with: title)
         click_on('Create Todo')
         assert_status_code_success
       end
 
       def finish_todo(todo)
-        post "todos/#{todo.id}/finished" # or click on finish button ?
+        # post "todos/#{todo.id}/finished"
+        click_on('Finish')
         assert_status_code_success
         visit_me
       end
