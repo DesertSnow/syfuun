@@ -1,9 +1,9 @@
 %h2
   TODO list
-%ul
+%ul.todo_items
   - @todos.order(:created_at).each do |todo|
-    %li
-      = todo.title
+    %li.todo_item
+      %span= todo.title
       - if todo.prior?
         %span.important !!!
       %form{action: todo_finished_path(todo), method: :post}
