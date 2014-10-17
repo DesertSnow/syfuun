@@ -4,7 +4,7 @@ require 'rails/test_help'
 require 'capybara/rails'
 
 class ActiveSupport::TestCase
-  fixtures :all
+  # fixtures :all
 
   # Add more helper methods to be used by all tests here...
 end

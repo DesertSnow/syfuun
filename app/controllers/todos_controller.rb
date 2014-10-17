@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.unfinished
+    @todos = Todo.unfinished.ordered_by_title
   end
 
   def new

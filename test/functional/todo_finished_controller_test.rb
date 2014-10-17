@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TodoFinishedControllerTest < ActionController::TestCase
+  fixtures :todos
+
   test 'create should flag todo as finished' do
     used_todo = todos(:unfinished)
     assert !used_todo.finished?

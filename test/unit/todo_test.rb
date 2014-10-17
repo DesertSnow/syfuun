@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TodoTest < ActiveSupport::TestCase
+  fixtures :todos
+
   test '#title is an attribute' do
     todo = Todo.new
     assert_nil todo.title
@@ -33,5 +35,16 @@ class TodoTest < ActiveSupport::TestCase
     todo.prioritise!
     assert todo.prior?
     assert !todo.changed?#changes persisted?
+  end
+
+  test 'scope "ordered_by_title"' do
+    ordered_todos = [
+        todos(:not_prioritised),
+        todos(:finished),
+        todos(:unfinished),
+        todos(:prioritised)
+    ].map(&:title)
+    resulting_todos = Todo.ordered_by_title.map(&:title)
+    assert_equal(ordered_todos, resulting_todos)
   end
 end
