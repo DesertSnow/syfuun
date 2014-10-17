@@ -1,5 +1,6 @@
 class Todo < ActiveRecord::Base
   attr_accessible :title
+  attr_accessible :person_id
 
   validates :title, presence: true, allow_blank: false
 

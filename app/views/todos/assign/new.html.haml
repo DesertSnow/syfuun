@@ -1,0 +1,8 @@
+%h1= "Assign a person to '#{@todo_as_assign.title}'"
+= form_for @todo_as_assign, url: todo_assign_path(@todo_as_assign.id), method: :post do |f|
+  %ul
+    - @people.each do |person|
+      %li
+        = f.radio_button :person_id, person.id
+        = f.label person.name
+  = f.submit 'Save'

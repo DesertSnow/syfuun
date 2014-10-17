@@ -7,6 +7,6 @@ Feature: Assigning of a todo to a person
 
   Given I have a person "Husband A"
   And I have a todo item "Doing the dishes"
-
-  When I assign the todo item "Doing the dishes" to person "Husband A"
+  When I go to "the todo list"
+  And I assign the todo item "Doing the dishes" to person "Husband A"
   Then "Husband A" is assignee of the todo "Doing the dishes"
