@@ -25,15 +25,17 @@
         |     Mow the lawn  |
         |     2do           |
         |     3D rendering  |
+      When I go to "the todo list"
+      And I open the browser
       When I prioritise the todo "3D rendering"
         And I prioritise the todo "Mow the lawn"
 #      When I go to the todo list
-#      Then "the todos" should be sorted "by priority alphabetically" as follows:
-#        |     name       |
-#        |     3D rendering  |
-#        |     Mow the lawn  |
-#        |     2do           |
-#        |     Zo the dishes |
+      Then "the todos" should be sorted "by priority alphabetically" as follows:
+        |     name       |
+        |     3D rendering  |
+        |     Mow the lawn  |
+        |     2do           |
+        |     Zo the dishes |
 
 
 

@@ -30,6 +30,8 @@ When /^the first todo item $/; '.todo_item:first'
 When /^the second todo item $/; '.todo_item:eq(1)'
 When /^the third todo item $/; '.todo_item:eq(2)'
 When /^the fourth todo item $/; '.todo_item:eq(3)'
+
+When /^the todo "(.*?)" */;
     end
   end
 end
