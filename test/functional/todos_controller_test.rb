@@ -1,20 +1,23 @@
 require 'test_helper'
 
 class TodosControllerTest < ActionController::TestCase
-  test '#index should render list of UNFINISHED todos' do
+
+  fixtures :todos
+
+  test '#index should render list of UNFINISHED todos ordered by name' do
     get :index
     assert_response :success
     assert_template :index
 
     todo_titles = assigns(:todos).map(&:title)
 
-    assert_equal(todos(:unfinished, :not_prioritised, :prioritised).map(&:title), todo_titles)
+    assert_equal(todos(:not_prioritised, :unfinished, :prioritised).map(&:title), todo_titles)
   end
 
   test '#index view should show all UNFINISHED todos' do#for discussion
     get :index
 
-    expected_list = todos(:unfinished, :not_prioritised, :prioritised).map(&:title)
+    expected_list = todos(:not_prioritised, :unfinished, :prioritised).map(&:title)
     assert_select('ul li') do |elements|
       assert_equal(expected_list.length, elements.length)
       (0...expected_list.length).each do |index|

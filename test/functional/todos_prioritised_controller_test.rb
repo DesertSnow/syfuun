@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TodosPrioritisedControllerTest < ActionController::TestCase
+  fixtures :todos
+
   test '#create prioritises the todo item' do
     post :create, todo_id: todos(:not_prioritised).id
     assert_redirected_to '/todos'

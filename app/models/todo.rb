@@ -4,6 +4,7 @@ class Todo < ActiveRecord::Base
   validates :title, presence: true, allow_blank: false
 
   scope :unfinished, -> {where(finished: false)}
+  scope :ordered_by_title, order(:title)
 
   def finish!
     update_attribute(:finished, true)
