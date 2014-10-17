@@ -28,7 +28,15 @@ When /^I go to "([^\"]*)"$/ do |page_name|
 end
 
 When /^I prioritise the todo "(.*?)"$/ do |todo|
-  entries = page.find(:css, '.todo_items').all('li.todo_item > span')
-
-
+  #page.find(:xpath,"//li[@class='todo_item'][contains(text(),'#{todo}')]//[@class='prioritise']").click
+  page.find(:xpath,"//li[@class='todo_item']//span[contains(text(), '#{todo}')]//..//input[@class='prioritise']").click
+  #with_scope("the todo") do
+  #  click_button("Prioritise")
+  #end
 end
+
+
+When /^I open the browser*/ do
+  save_and_open_page
+end
+

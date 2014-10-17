@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'pg'
 gem 'strong_parameters'
-gem 'capybara'
+gem "capybara", "1.1.4"
+gem 'capybara-webkit', '0.12.1'
 gem "haml"
 gem "haml-rails"
