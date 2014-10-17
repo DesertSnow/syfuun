@@ -15,6 +15,11 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'#comes recommended with cucumber
+end
+
 gem 'jquery-rails'
 gem 'pg'
 gem 'strong_parameters'
